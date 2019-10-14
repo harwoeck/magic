@@ -1,6 +1,6 @@
 # magic
 
-:tophat: Package `magic` is an auto-parsing library and competitive coding helper package with batteries included. You just need to initialize it with a `SrcProvider` (e.g. a string, file, stream, etc.) and subsequently whish a type to auto-parse. The library takes care of allocating memory and populating it. The sequence of inputs is defined by the memory layout of the reading-type.
+:carousel_horse: `magic` is an auto-parsing library and competitive coding helper package with batteries included. You just need to initialize it with a `SrcProvider` (e.g. a string, file, stream, etc.) and subsequently whish a type to auto-parse. The library takes care of allocating memory and populating it. The sequence of inputs is defined by the memory layout of the reading-type.
 
 **In no circumstance you should use this package for production code. Use it only during competetive coding, when coding time matters and input parsing is trivial. I originally built this for the [Catalysts Coding Contest (codingcontest.org)](http://codingcontest.org)**
 
