@@ -30,7 +30,7 @@ func (m *Manager) vLen(v reflect.Value) int {
 	if vlen := v.Len(); vlen != 0 {
 		len = vlen
 	} else if vcap := v.Cap(); vcap != 0 {
-		len = vlen
+		len = vcap
 	} else {
 		len = m.ReadInt()
 	}
