@@ -84,10 +84,10 @@ func (m *Manager) ReadInt16() int16 {
 	return int16(m.readInt(16))
 }
 
-// ReadInt reads a single element from the SrcProvider and tries to interpret
-// it as int.
-func (m *Manager) ReadInt() int {
-	return int(m.readInt(32))
+// ReadInt32 reads a single element from the SrcProvider and tries to interpret
+// it as int32.
+func (m *Manager) ReadInt32() int32 {
+	return int32(m.readInt(32))
 }
 
 // ReadInt64 reads a single element from the SrcProvider and tries to interpret
@@ -96,28 +96,46 @@ func (m *Manager) ReadInt64() int64 {
 	return m.readInt(64)
 }
 
+// ReadInt reads a single element from the SrcProvider and tries to interpret
+// it as int.
+func (m *Manager) ReadInt() int {
+	return int(m.readInt(0))
+}
+
+// ReadByte reads a single element from the SrcProvider and tries to interpret
+// it as byte.
+func (m *Manager) ReadByte() byte {
+	return byte(m.readUint(8))
+}
+
 // ReadUint8 reads a single element from the SrcProvider and tries to interpret
 // it as uint8.
 func (m *Manager) ReadUint8() uint8 {
-	return uint8(m.readInt(8))
+	return uint8(m.readUint(8))
 }
 
 // ReadUint16 reads a single element from the SrcProvider and tries to interpret
 // it as uint16.
 func (m *Manager) ReadUint16() uint16 {
-	return uint16(m.readInt(16))
+	return uint16(m.readUint(16))
 }
 
-// ReadUint reads a single element from the SrcProvider and tries to interpret
-// it as uint.
-func (m *Manager) ReadUint() uint {
-	return uint(m.readUint(32))
+// ReadUint32 reads a single element from the SrcProvider and tries to interpret
+// it as uint16.
+func (m *Manager) ReadUint32() uint32 {
+	return uint32(m.readUint(32))
 }
 
 // ReadUint64 reads a single element from the SrcProvider and tries to interpret
 // it as uint64.
 func (m *Manager) ReadUint64() uint64 {
 	return m.readUint(64)
+}
+
+// ReadUint reads a single element from the SrcProvider and tries to interpret
+// it as uint.
+func (m *Manager) ReadUint() uint {
+	return uint(m.readUint(0))
 }
 
 // ReadFloat32 reads a single element from the SrcProvider and tries to interpret
