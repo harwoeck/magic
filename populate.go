@@ -46,7 +46,7 @@ func (m *Manager) pop(t reflect.Type, v reflect.Value) {
 	case reflect.Int16:
 		v.SetInt(m.readInt(16))
 	case reflect.Int:
-		fallthrough
+		v.SetInt(m.readInt(0))
 	case reflect.Int32:
 		v.SetInt(m.readInt(32))
 	case reflect.Int64:
@@ -56,7 +56,7 @@ func (m *Manager) pop(t reflect.Type, v reflect.Value) {
 	case reflect.Uint16:
 		v.SetUint(m.readUint(16))
 	case reflect.Uint:
-		fallthrough
+		v.SetUint(m.readUint(0))
 	case reflect.Uint32:
 		v.SetUint(m.readUint(32))
 	case reflect.Uint64:
