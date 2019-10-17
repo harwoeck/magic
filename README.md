@@ -1,8 +1,8 @@
 # magic
 
-`magic` is an auto-parsing library and competitive coding helper package with batteries included. You just need to initialize it with a `SrcProvider` (e.g. a string, file, stream, etc.) and subsequently whish a type to auto-parse. The library takes care of allocating and populating your memory. The sequence of inputs is defined by the memory layout of the reading-type.
+`magic` is an auto-parsing library and competitive coding helper package with batteries included. You just need to initialize it with a `SrcProvider` (e.g. a string, file, stream, etc.) and subsequently wish a type to auto-parse. The library takes care of allocating and populating your memory. The sequence of inputs is defined by the memory layout of the reading-type.
 
-**In no circumstance you should use this package for production code. Use it only during competetive coding, when coding time matters and input parsing is trivial. I originally built this for the [Catalysts Coding Contest (codingcontest.org)](http://codingcontest.org)**
+**Under no circumstances should you use this package for production code. Use it only during competetive coding, when coding time matters and input parsing is trivial. I originally built this for the [Catalysts Coding Contest (codingcontest.org)](http://codingcontest.org)**
 
 [![GoDoc](https://godoc.org/github.com/harwoeck/magic?status.svg)](https://godoc.org/github.com/harwoeck/magic)
 [![Go Report Card](https://goreportcard.com/badge/github.com/harwoeck/magic)](https://goreportcard.com/report/github.com/harwoeck/magic)
