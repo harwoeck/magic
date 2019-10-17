@@ -6,23 +6,11 @@ import (
 )
 
 func (m *Manager) newV(t reflect.Type) reflect.Value {
-	v := reflect.New(t)
-
-	switch t.Kind() {
-	/*case reflect.Struct:
-	return v*/
-	default:
-		return v.Elem()
-	}
+	return reflect.New(t).Elem()
 }
 
 func (m *Manager) getI(t reflect.Type, v reflect.Value) interface{} {
-	switch t.Kind() {
-	/*case reflect.Struct:
-	return v.Elem().Interface()*/
-	default:
-		return v.Interface()
-	}
+	return v.Interface()
 }
 
 func (m *Manager) vLen(v reflect.Value) int {
@@ -102,10 +90,6 @@ func (m *Manager) popColl(t reflect.Type, v reflect.Value) {
 }
 
 func (m *Manager) popStruct(t reflect.Type, v reflect.Value) {
-	if v.Kind() == reflect.Ptr {
-		v = v.Elem()
-	}
-
 	for idx := 0; idx < t.NumField(); idx++ {
 		ft := t.Field(idx).Type
 		fvPtr := unsafe.Pointer(v.Field(idx).UnsafeAddr())
