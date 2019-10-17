@@ -12,9 +12,9 @@ type cursor struct {
 
 func newCursor(src SrcProvider) *cursor {
 	c := &cursor{
-		src: src,
+		src:     src,
+		lBufIdx: -1,
 	}
-	c.nextBuf()
 	return c
 }
 
