@@ -30,8 +30,28 @@ import (
 func (m *Manager) Read(wish interface{}) interface{} {
 	t := reflect.TypeOf(wish)
 	v := m.newV(t)
-	m.pop(t, v)
-	return m.getI(t, v)
+	m.pop(t, v, v)
+
+	return m.getI(v)
+}
+
+func (m *Manager) ReadMatrix(wish interface{}) interface{} {
+	t := reflect.TypeOf(wish)
+	v := reflect.New(t).Elem()
+
+	r := m.ReadInt()
+	c := m.ReadInt()
+
+	s := reflect.MakeSlice(t, r, r)
+
+	for idx := 0; idx < r; idx++ {
+		s.Index(idx).Set(reflect.MakeSlice(t.Elem(), c, c))
+	}
+
+	v.Set(s)
+	m.pop(t, v, v)
+
+	return m.getI(v)
 }
 
 // ReadBool reads a single element from the SrcProvider and tries to interpret

@@ -1,7 +1,21 @@
 package magic
 
-// SrcProvider can be used to deliver input into a magic.Manager
-type SrcProvider interface {
-	Scan() bool
-	Text() string
+import (
+	"fmt"
+	"io"
+	"os"
+	"strings"
+)
+
+func FromString(s string) io.Reader {
+	return strings.NewReader(s)
+}
+
+func FromFile(path string) io.Reader {
+	f, err := os.Open(path)
+	if err != nil {
+		fmt.Printf("[manager] unable to open file: %v\n", err)
+	}
+
+	return f
 }

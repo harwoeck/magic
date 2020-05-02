@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"strings"
 
 	"github.com/harwoeck/magic"
 )
@@ -39,13 +37,13 @@ type txout struct {
 }
 
 func main() {
-	src := bufio.NewScanner(strings.NewReader(
+	r := magic.FromString(
 		"4\n" +
 			"0x300 2 0x100 150 0x200 250 Alfonso 400 0x000 1 true true false true 50\n" +
 			"0x600 1 0x100 400 Stephan 100 0x000 1 true false false true 33.7\n" +
 			"str1 2 str2 100 str3 100 Name 200 xx 1 true true true true 200\n" +
-			"str4 1 str5 100 OtherName 20 xx 1 false false false false 100"))
-	m := magic.NewManager(src)
+			"str4 1 str5 100 OtherName 20 xx 1 false false false false 100")
+	m := magic.NewManager(r, magic.NewStringSplitDecoder(" "), nil)
 
 	for _, t := range m.Read([]*tx{}).([]*tx) {
 		t.Print()

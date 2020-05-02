@@ -1,36 +1,40 @@
 package magic
 
 import (
-	"strings"
+	"fmt"
+	"os"
 )
 
 type cursor struct {
-	src     SrcProvider
+	dec     Decoder
 	lBuf    []string
 	lBufIdx int
 }
 
-func newCursor(src SrcProvider) *cursor {
+func newCursor(src Decoder) *cursor {
 	c := &cursor{
-		src:     src,
+		dec:     src,
 		lBufIdx: -1,
 	}
+
 	return c
 }
 
 func (c *cursor) nextBuf() {
-	if !c.src.Scan() {
-		panic("end of input reached")
+	lBuf, err := c.dec.Read()
+	if err != nil {
+		fmt.Printf("[cursor] unable to read nextBuf (e.g. record): %v\n", err)
+		os.Exit(-1)
 	}
 
-	buf := c.src.Text()
-	c.lBuf = strings.Split(buf, " ")
+	c.lBuf = lBuf
 	c.lBufIdx = -1
 }
 
 // next returns the next string from the cursor
 func (c *cursor) next() string {
 	c.lBufIdx++
+
 	if c.lBufIdx == len(c.lBuf) {
 		c.nextBuf()
 		return c.next()
